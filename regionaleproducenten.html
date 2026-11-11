@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="utf-8" />
+<title>Mooi Maasvallei - Voedselproducenten in de Regio</title>
+<style>
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        min-height: 100% !important;
+        background-color: #ffffff !important;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+    body {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+
+    /* --- NAVIGATIEBALK --- */
+    #navbar {
+        width: 100%;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 40px;
+        box-sizing: border-box;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        position: relative;
+        z-index: 1000;
+    }
+.nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.nav-logo img {
+    height: 85px; /* Pas eventueel de hoogte aan naar wens */
+    width: auto;
+    object-fit: contain;
+}
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        font-size: 15px;
+        padding: 8px 14px;
+        border-radius: 20px;
+        transition: all 0.2s ease;
+    }
+    .nav-links a:hover {
+        color: #0066ff;
+    }
+    .nav-links a.active {
+        background-color: #3bb2e8;
+        color: white;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .nav-contact {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    /* --- CONTENT CONTAINER --- */
+    .content-wrapper {
+        width: 100%;
+        max-width: 1100px;
+        margin: 30px 20px 60px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+.hero-banner {
+        position: relative;
+        width: 100%;
+        height: 220px; /* Of de hoogte die jij mooi vindt */
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    
+    .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;        /* <--- Dit zorgt dat de verhouding intact blijft en het kader vult */
+        object-position: center;  /* <--- Houdt de foto mooi in het midden gecentreerd */
+        /* Verwijder eventuele transform: scale() als die er nog stond, of zet hem op 1 */
+    }
+    /* --- TITEL BUBBEL --- */
+    .page-title-badge {
+        align-self: flex-start;
+        background-color: #a3d977;
+        color: #000;
+        font-weight: bold;
+        font-size: 26px;
+        padding: 10px 30px;
+        border-radius: 30px;
+        margin-top: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* --- HOOFDKADER (WITTE CONTAINER) --- */
+    .main-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+    }
+
+    /* --- TERUG KNOP & INTRO --- */
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #0066ff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    .main-card h2 {
+        font-size: 24px;
+        color: #000;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .intro-text {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #444;
+        margin-bottom: 15px;
+    }
+
+    /* --- GRID VOOR LINKSE LIJST & RECHTER GROENE BLOK --- */
+    .content-split-grid {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr;
+        gap: 40px;
+        align-items: start;
+    }
+
+    .producers-list {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .producer-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .producer-circle {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        border: 2px solid #eaeaea;
+    }
+
+    .producer-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .producer-info h3 {
+        margin: 0 0 5px 0;
+        font-size: 18px;
+        color: #000;
+    }
+
+    .producer-info p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #555;
+    }
+
+    /* --- RECHTER GROENE INFO BOX --- */
+    .green-info-box {
+        background-color: #cce8b0;
+        border-radius: 16px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .info-item h4 {
+        margin: 0 0 5px 0;
+        font-size: 16px;
+        color: #000;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .info-item p {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #333;
+    }
+
+    /* --- ONDERSTE SECTIE: INTERACTIEVE KAART --- */
+    .bottom-section {
+        border-top: 1px solid #e0e0e0;
+        padding-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .bottom-section h3 {
+        margin: 0;
+        font-size: 22px;
+        color: #000;
+    }
+
+    .bottom-section p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #444;
+    }
+
+    .map-btn {
+        align-self: flex-start;
+        background-color: #d8f0fa;
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: 1px solid #bce2f5;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background-color 0.2s;
+    }
+    .map-btn:hover {
+        background-color: #c4e7f7;
+    }
+
+    @media (max-width: 900px) {
+        .content-split-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+ footer {
+    width: 100%;
+    height: 160px;
+    background: transparent;
+    position: relative;
+    margin-top: auto;
+    z-index: 1;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(90deg, #78bce0 0%, #78bce0 25%, #a3d977 25%, #a3d977 65%, #78bce0 65%);
+    clip-path: polygon(0 75%, 100% 25%, 100% 100%, 0 100%);
+    z-index: 1;
+}
+</style>
+</head>
+<body>
+
+    <!-- Navigatiebalk -->
+    <div id="navbar">
+        <a href="hoofdpagina.html" class="nav-logo">
+    <img src="images/logo.png" alt="Mooi Maasvallei Logo">
+</a>
+        <div class="nav-links">
+            <a href="hoofdpagina.html">Hoofdpagina</a>
+            <a href="producenten.html" class="active">Producenten</a>
+            <a href="afnemers.html">Afnemers</a>
+            <a href="kaart.html">Kaart</a>
+            <a href="consument.html">Consument</a>
+            <a href="bronnen.html">Bronnen</a>
+        </div>
+        <a href="https://mooimaasvallei.nl/contact/" class="nav-contact">| Contact |</a>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+
+        <!-- Hero Banner: voedselregio.png -->
+        <div class="hero-banner">
+            <img src="images/landbouwgrond1.jpg" alt="Voedselregio banner">
+        </div>
+
+        <!-- Titel Bubbel -->
+        <div class="page-title-badge">
+            Voedselproducenten in de Regio
+        </div>
+
+        <!-- Hoofdkader -->
+        <div class="main-card">
+            
+            <div>
+                <a href="producenten.html" class="back-link">&larr; Terug naar overzicht</a>
+                <h2>Waar komt ons voedsel vandaan?</h2>
+                <p class="intro-text">
+                    Voordat voedsel op ons bord belandt, is het eerst geproduceerd door een boer of tuinder. Ook in de regio Land van Cuijk, Gennep en Bergen zijn veel agrarische bedrijven actief. Maar wat wordt er allemaal in deze regio geproduceerd en waar gebeurt dat?
+                </p>
+            </div>
+
+            <!-- Raster met links de producenten en rechts het groene info-blok -->
+            <div class="content-split-grid">
+                
+                <!-- Linkerkant: De 3 typen producenten met ronde afbeeldingen -->
+                <div class="producers-list">
+                    
+                    <!-- Akkerbouw -->
+                    <div class="producer-row">
+                        <div class="producer-circle">
+                            <img src="images/traktor.webp" alt="Akkerbouw tractor">
+                        </div>
+                        <div class="producer-info">
+                            <h3>Akkerbouw</h3>
+                            <p>Zij verbouwen gewassen op akkers, zoals aardappelen, granen en andere landbouwgewassen.</p>
+                        </div>
+                    </div>
+
+                    <!-- Veehouders -->
+                    <div class="producer-row">
+                        <div class="producer-circle">
+                            <img src="images/koeien.jpg" alt="Veehouders koeien">
+                        </div>
+                        <div class="producer-info">
+                            <h3>Veehouders</h3>
+                            <p>Zij houden dieren voor de productie van melk, vlees en eieren.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tuinders -->
+                    <div class="producer-row">
+                        <div class="producer-circle">
+                            <img src="images/tuinders.avif" alt="Tuinders in kas">
+                        </div>
+                        <div class="producer-info">
+                            <h3>Tuinders</h3>
+                            <p>Zij telen groenten, fruit en andere gewassen. In kassen of op het land.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Rechterkant: Groene informatiebox -->
+                <div class="green-info-box">
+                    <div class="info-item">
+                        <h4>🥗 Gezond voedsel:</h4>
+                        <p>Voedsel dat binnen een gezond voedingspatroon past, zoals de schijf van vijf, met veel groenten en fruit, volkorenproducten en eiwitbronnen.</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h4>📍 Lokaal voedsel:</h4>
+                        <p>Voedsel dat in eigen regio wordt geproduceerd. In dit geval de gemeenten Land van Cuijk, Gennep en Bergen.</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h4>🌱 Biologisch voedsel:</h4>
+                        <p>Voedsel dat wordt geproduceerd volgens de Europese biologische richtlijnen. Deze zorgen ervoor dat de voedselproductie goed is voor dieren, mensen, milieu en biodiversiteit. Hiervoor geldt een officiële certificering.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Onderste sectie: Regionale voedselproducenten in beeld & Kaart knop -->
+            <div class="bottom-section">
+                <h3>Regionale voedselproducenten in beeld</h3>
+                <p>
+                    Op een kaart is inzichtelijk gemaakt uit welke typen landbouwgrond de regio Land van Cuijk, Gennep en Bergen bestaat. Daarnaast is ook de verdeling van de landbouwgrond in hectare zichtbaar.
+                </p>
+                <p>
+                    Helaas is niet alle informatie openbaar beschikbaar. Zo weten we niet altijd hoeveel voedsel een bedrijf produceert en hoeveel daarvan beschikbaar is voor de verkoop.<br>
+                    Ook is is er geen informatie beschikbaar over welke landbouwgronden daadwerkelijk biologisch voedsel produceren. Dit is afhankelijk van het landbouwbedrijf.
+                </p>
+                
+                <a href="kaart.html" class="map-btn">
+                    Bekijk de interactieve kaart &nearr;
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="utf-8" />
+<title>Mooi Maasvallei - Van producent tot afnemer</title>
+<style>
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        min-height: 100% !important;
+        background-color: #ffffff !important;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+    body {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+
+    /* --- NAVIGATIEBALK --- */
+    #navbar {
+        width: 100%;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 40px;
+        box-sizing: border-box;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        position: relative;
+        z-index: 1000;
+    }
+.nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.nav-logo img {
+    height: 85px; /* Pas eventueel de hoogte aan naar wens */
+    width: auto;
+    object-fit: contain;
+}
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        font-size: 15px;
+        padding: 8px 14px;
+        border-radius: 20px;
+        transition: all 0.2s ease;
+    }
+    .nav-links a:hover {
+        color: #0066ff;
+    }
+    .nav-links a.active {
+        background-color: #3bb2e8;
+        color: white;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .nav-contact {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    /* --- CONTENT CONTAINER --- */
+    .content-wrapper {
+        width: 100%;
+        max-width: 1100px;
+        margin: 30px 20px 60px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    /* --- HERO BANNER --- */
+    .hero-banner {
+        position: relative;
+        width: 100%;
+        height: 280px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* --- TITEL BUBBEL --- */
+    .page-title-badge {
+        align-self: flex-start;
+        background-color: #a3d977;
+        color: #000;
+        font-weight: bold;
+        font-size: 26px;
+        padding: 10px 30px;
+        border-radius: 30px;
+        margin-top: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* --- HOOFDKADER (WITTE CONTAINER) --- */
+    .main-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #0066ff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    .main-card h2 {
+        font-size: 24px;
+        color: #000;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .section-text {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #444;
+        margin: 0 0 15px 0;
+    }
+
+    /* --- KETEN AFBEELDING SECTIE --- */
+    .keten-section h3 {
+        font-size: 24px;
+        color: #000;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .keten-image-container {
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        background: #f9f9f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    .keten-image-container img {
+        width: 100%;
+        max-width: 850px;
+        height: auto;
+        object-fit: contain;
+        border-radius: 6px;
+    }
+
+    /* --- UITDATINGEN LIJST --- */
+    .challenges-list {
+        margin: 0;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .challenges-list li {
+        font-size: 15px;
+        line-height: 1.5;
+        color: #444;
+    }
+
+    .challenges-list li strong {
+        color: #000;
+    }
+
+footer {
+    width: 100%;
+    height: 160px;
+    background: transparent;
+    position: relative;
+    margin-top: auto;
+    z-index: 1;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(90deg, #78bce0 0%, #78bce0 25%, #a3d977 25%, #a3d977 65%, #78bce0 65%);
+    clip-path: polygon(0 75%, 100% 25%, 100% 100%, 0 100%);
+    z-index: 1;
+}
+</style>
+</head>
+<body>
+
+    <!-- Navigatiebalk -->
+    <div id="navbar">
+        <a href="hoofdpagina.html" class="nav-logo">
+    <img src="images/logo.png" alt="Mooi Maasvallei Logo">
+</a>
+        <div class="nav-links">
+            <a href="hoofdpagina.html">Hoofdpagina</a>
+            <a href="producenten.html" class="active">Producenten</a>
+            <a href="afnemers.html">Afnemers</a>
+            <a href="kaart.html">Kaart</a>
+            <a href="consument.html">Consument</a>
+            <a href="bronnen.html">Bronnen</a>
+        </div>
+        <a href="https://mooimaasvallei.nl/contact/" class="nav-contact">| Contact |</a>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+
+        <!-- Hero Banner: productafnemer.png -->
+        <div class="hero-banner">
+            <img src="images/productafnemer.png" alt="Van producent tot afnemer banner">
+        </div>
+
+        <!-- Titel Bubbel -->
+        <div class="page-title-badge">
+            Van producent tot afnemer
+        </div>
+
+        <!-- Hoofdkader -->
+        <div class="main-card">
+            
+            <div>
+                <a href="producenten.html" class="back-link">&larr; Terug naar overzicht</a>
+                <h2>De voedselketen</h2>
+                <p class="section-text">
+                    Voedsel komt niet altijd rechtstreeks van de boer bij een afnemer of consument terecht. Vaak zijn er verschillende tussenstappen nodig voordat producten gebruikt kunnen worden. Denk hierbij aan het wassen, verpakken, vervoeren en opslaan van voedsel.
+                </p>
+                <p class="section-text">
+                    Het onderstaande overzicht laat zien welke stappen voedsel kan doorlopen van producent tot uiteindelijke afnemer.
+                </p>
+                <p class="section-text">
+                    <strong>Let op</strong>, niet ieder product doorloopt dezelfde route. Een boer kan er bijvoorbeeld ook voor kiezen om de eigen producten te verkopen in een boerderijwinkel. Dit wordt ook wel een <strong>korte keten</strong> genoemd.
+                </p>
+            </div>
+
+            <!-- Keten sectie met gelijke kopgrootte -->
+            <div class="keten-section">
+                <h3>Stappen van producent tot afnemer</h3>
+                <div class="keten-image-container">
+                    <img src="images/keten1.png" alt="Overzicht van stappen in de voedselketen">
+                </div>
+            </div>
+
+            <!-- Uitdagingen sectie -->
+            <div>
+                <h2>Uitdagingen voor de voedselketen</h2>
+                <p class="section-text">
+                    Voedsel van regionale boeren naar grote afnemers zoals ziekenhuizen en zorginstellingen krijgen is niet altijd eenvoudig. Deze instellingen hebben het hele jaar door grote hoeveelheden voedsel nodig. Dat brengt een aantal uitdagingen met zich mee:
+                </p>
+                <ul class="challenges-list">
+                    <li><strong>Hoeveelheid:</strong> Een individuele boer kan misschien niet genoeg producten leveren om een grote instelling te bevoorraden.</li>
+                    <li><strong>Wisselend aanbod:</strong> De hoeveelheid en variatie van producten kan per seizoen veranderen.</li>
+                    <li><strong>Opslaglocaties:</strong> Verse producten moeten vaak gekoeld bewaard worden. Hiervoor zijn opslaglocaties nodig.</li>
+                    <li><strong>Transport:</strong> Voedsel moet op tijd op de juiste locaties afgeleverd worden.</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+  
+
+</body>
+</html>

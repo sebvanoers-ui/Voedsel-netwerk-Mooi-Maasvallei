@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="utf-8" />
+<title>Mooi Maasvallei - Kansen voor voedselproducenten</title>
+<style>
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        min-height: 100% !important;
+        background-color: #ffffff !important;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+    body {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+
+    /* --- NAVIGATIEBALK --- */
+    #navbar {
+        width: 100%;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 40px;
+        box-sizing: border-box;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        position: relative;
+        z-index: 1000;
+    }
+.nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.nav-logo img {
+    height: 85px; /* Pas eventueel de hoogte aan naar wens */
+    width: auto;
+    object-fit: contain;
+}
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        font-size: 15px;
+        padding: 8px 14px;
+        border-radius: 20px;
+        transition: all 0.2s ease;
+    }
+    .nav-links a:hover {
+        color: #0066ff;
+    }
+    .nav-links a.active {
+        background-color: #3bb2e8;
+        color: white;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .nav-contact {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    /* --- CONTENT CONTAINER --- */
+    .content-wrapper {
+        width: 100%;
+        max-width: 1100px;
+        margin: 30px 20px 60px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    /* --- HERO BANNER --- */
+    .hero-banner {
+        position: relative;
+        width: 100%;
+        height: 280px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* --- TITEL BUBBEL --- */
+    .page-title-badge {
+        align-self: flex-start;
+        background-color: #a3d977;
+        color: #000;
+        font-weight: bold;
+        font-size: 26px;
+        padding: 10px 30px;
+        border-radius: 30px;
+        margin-top: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* --- HOOFDKADER (WITTE CONTAINER) --- */
+    .main-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #0066ff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    .main-card h2 {
+        font-size: 24px;
+        color: #000;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .section-text {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #444;
+        margin: 0 0 15px 0;
+    }
+
+    /* --- GRID LAYOUT VOOR KANSEN & BALLONNETJES --- */
+    .kansen-grid {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .kansen-list {
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+    }
+
+    .kansen-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kansen-circle {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        border: 2px solid #eaeaea;
+    }
+
+    .kansen-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .kansen-info h3 {
+        margin: 0 0 5px 0;
+        font-size: 18px;
+        color: #000;
+    }
+
+    .kansen-info p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #555;
+    }
+
+    .kansen-info ul {
+        margin: 8px 0 0 0;
+        padding-left: 18px;
+        font-size: 14px;
+        color: #555;
+        line-height: 1.5;
+    }
+
+    .kansen-info li {
+        margin-bottom: 4px;
+    }
+
+    /* --- RECHTER KANT: TEKSTBALLONNETJES --- */
+    .ballonnetjes-col {
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+        justify-content: center;
+    }
+
+    .speech-bubble {
+        background-color: #d8f0fa;
+        border-radius: 20px;
+        padding: 18px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #333;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+        position: relative;
+        border: 1px solid #bce2f5;
+    }
+
+    .speech-bubble.green {
+        background-color: #eaf6d8;
+        border-color: #d2ecb0;
+    }
+
+    .speech-bubble a {
+        color: #0066ff;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    @media (max-width: 900px) {
+        .kansen-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* --- FOOTER --- */
+   footer {
+    width: 100%;
+    height: 160px;
+    background: transparent;
+    position: relative;
+    margin-top: auto;
+    z-index: 1;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(90deg, #78bce0 0%, #78bce0 25%, #a3d977 25%, #a3d977 65%, #78bce0 65%);
+    clip-path: polygon(0 75%, 100% 25%, 100% 100%, 0 100%);
+    z-index: 1;
+}
+</style>
+</head>
+<body>
+
+    <!-- Navigatiebalk -->
+    <div id="navbar">
+        
+        <div class="nav-links">
+            <a href="hoofdpagina.html">Hoofdpagina</a>
+            <a href="producenten.html" class="active">Producenten</a>
+            <a href="afnemers.html">Afnemers</a>
+            <a href="kaart.html">Kaart</a>
+            <a href="consument.html">Consument</a>
+            <a href="bronnen.html">Bronnen</a>
+        </div>
+        <a href="https://mooimaasvallei.nl/contact/" class="nav-contact">| Contact |</a>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+
+        <!-- Hero Banner: kansenproducenten.png -->
+        <div class="hero-banner">
+            <img src="images/Landbouwgrond3.webp" alt="Kansen voor voedselproducenten banner">
+        </div>
+
+        <!-- Titel Bubbel -->
+        <div class="page-title-badge">
+            Kansen voor voedselproducenten
+        </div>
+
+        <!-- Hoofdkader -->
+        <div class="main-card">
+            
+            <div>
+                <a href="producenten.html" class="back-link">&larr; Terug naar overzicht</a>
+                <h2>Hoe kan regionaal voedsel meer afnemers bereiken?</h2>
+                <p class="section-text">
+                    In Land van Cuijk, Gennep en Bergen wordt allerlei voedsel geproduceerd. Toch komt dit voedsel niet vanzelf terecht bij ziekenhuizen, zorginstellingen en andere grote afnemers.<br>
+                    Hoe kunnen producenten en afnemers elkaar beter vinden en wat is daarvoor nodig?
+                </p>
+                <h3 style="font-size: 20px; color: #000; margin-top: 25px; margin-bottom: 20px;">Waar liggen de kansen voor voedselproducenten?</h3>
+            </div>
+
+            <!-- Raster met de rijen links en de tekstballonnen rechts -->
+            <div class="kansen-grid">
+                
+                <!-- Linkerkant: De 3 onderwerpen met bolletjes -->
+                <div class="kansen-list">
+                    
+                    <!-- Rij 1: Samenwerking tussen regionale boeren -->
+                    <div class="kansen-row">
+                        <div class="kansen-circle">
+                            <img src="images/samenwerkingboeren.jpg" alt="Samenwerking tussen boeren">
+                        </div>
+                        <div class="kansen-info">
+                            <h3>Samenwerking tussen regionale boeren</h3>
+                            <p>Boerenbedrijven kunnen ervoor kiezen om samen te werken en een <strong>boeren-netwerk</strong> te vormen. Zo kunnen ze hun producten bundelen en samen een groter en gevarieerder aanbod leveren aan afnemers. Ook kunnen er onderlinge afspraken gemaakt worden over bijvoorbeeld <strong>gezamenlijke opslaglocaties</strong> of transport.</p>
+                        </div>
+                    </div>
+
+                    <!-- Rij 2: Producenten en afnemers verbinden -->
+                    <div class="kansen-row">
+                        <div class="kansen-circle">
+                            <img src="images/producenten&afnemers.jpeg" alt="Producenten en afnemers verbinden">
+                        </div>
+                        <div class="kansen-info">
+                            <h3>Producenten en afnemers verbinden.</h3>
+                            <p>Door producenten en afnemers met elkaar in contact te brengen kunnen vraag en aanbod beter op elkaar worden afgestemd. Denk bijvoorbeeld aan:</p>
+                            <ul>
+                                <li>Een overzicht van regionale producenten en hun producten. Zodat afnemers makkelijk kunnen vinden welke producten er in de regio geproduceerd worden.</li>
+                                <li>Afspraken tussen boeren en afnemers over wie welke producten kan leveren en in welke hoeveelheid.</li>
+                                <li>Een gezamelijk bestelsysteem waarin afnemers producten van verschillende regionale boeren kunnen bestellen.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Rij 3: Voedselverspilling verminderen -->
+                    <div class="kansen-row">
+                        <div class="kansen-circle">
+                            <img src="images/voedselverspilling.jpg" alt="Voedselverspilling verminderen">
+                        </div>
+                        <div class="kansen-info">
+                            <h3>Voedselverspilling verminderen</h3>
+                            <p>Soms blijft er voedsel over omdat er meer is geproduceerd dan verkocht kan worden, of omdat producten niet aan de eisen van supermarkten voldoen.<br>Door deze producten aan andere afnemers te leveren of te verwerken tot bijvoorbeeld soep of saus, kan worden voorkomen dat goed voedsel wordt weggegooid.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Rechterkant: Tekstballonnetjes -->
+                <div class="ballonnetjes-col">
+                    <div class="speech-bubble green">
+                        <a href="https://www.bio-lvc.nl/" target="_blank">Bio in onze buurt &nearr;</a> is een initiatief van biologische boeren, telers, verwerkers en winkels in Land van Cuijk. Deze ondernemers bundelen hun krachten door kennis uit te wisselen en open dagen te organiseren om bezoekers te informeren.
+                    </div>
+
+                    <div class="speech-bubble">
+                        <a href="https://www.brabantsstreekgoed.nl/" target="_blank">Brabants Streekgoed &nearr;</a> werkt samen met regionale boeren om hun producten gezamenlijk aan te bieden en te distribueren. Hierbij ondersteunt de externe organisatie <a href="https://www.beukk.com/" target="_blank">BEUKK &nearr;</a> als digitaal platform bij de logistieke aanpak.
+                    </div>
+
+                    <div class="speech-bubble green">
+                        <a href="https://nowastearmy.nl/" target="_blank">No Waste Army &nearr;</a> redt groenten en fruit die boeren niet verkocht krijgen omdat ze te groot, te klein, of afwijkend van vorm zijn. Ze verwerken een deel hiervan tot houdbare producten zoals soep en saus, en verkopen de andere producten vers via voedselboxen.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+    </footer>
+
+</body>
+</html>

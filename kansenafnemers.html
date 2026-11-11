@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="utf-8" />
+<title>Mooi Maasvallei - Kansen voor voedsel afnemers</title>
+<style>
+    /* --- ACHTERGROND & BASIS --- */
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        min-height: 100% !important;
+        background-color: #ffffff !important;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+    body {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    /* --- NAVIGATIEBALK --- */
+    #navbar {
+        width: 100%;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 40px;
+        box-sizing: border-box;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        position: relative;
+        z-index: 1000;
+    }
+.nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.nav-logo img {
+    height: 85px; /* Pas eventueel de hoogte aan naar wens */
+    width: auto;
+    object-fit: contain;
+}
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        font-size: 15px;
+        padding: 8px 14px;
+        border-radius: 20px;
+        transition: all 0.2s ease;
+    }
+    .nav-links a:hover {
+        color: #0066ff;
+    }
+    .nav-links a.active {
+        background-color: #3bb2e8;
+        color: white;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .nav-contact {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    /* --- CONTENT CONTAINER --- */
+    .content-wrapper {
+        width: 100%;
+        max-width: 1100px;
+        margin: 30px 20px 100px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        z-index: 2;
+    }
+
+    /* --- HERO BANNER --- */
+    .hero-banner {
+        position: relative;
+        width: 100%;
+        height: 280px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* --- TITEL BUBBEL --- */
+    .page-title-badge {
+        align-self: flex-start;
+        background-color: #a3d977;
+        color: #000;
+        font-weight: bold;
+        font-size: 26px;
+        padding: 10px 30px;
+        border-radius: 30px;
+        margin-top: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* --- HOOFDKADER (WITTE CONTAINER) --- */
+    .main-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        border: 1px solid #eee;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #0066ff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    .main-card h2 {
+        font-size: 24px;
+        color: #000;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .section-text {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #444;
+        margin: 0 0 15px 0;
+    }
+
+    /* --- NUMMERS BLOKKEN (1 t/m 4) --- */
+    .kans-item {
+        margin-bottom: 15px;
+    }
+
+    .kans-item h3 {
+        font-size: 17px;
+        color: #000;
+        margin: 0 0 5px 0;
+    }
+
+    .kans-item p {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #444;
+        margin: 0;
+    }
+
+    /* --- VOORBEELD SECTIE --- */
+    .voorbeeld-box {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .voorbeeld-box h3 {
+        font-size: 18px;
+        color: #000;
+        margin: 0 0 8px 0;
+    }
+
+    .voorbeeld-box p {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #444;
+        margin: 0;
+    }
+
+    /* --- INFOGRAPHIC SECTIE --- */
+    .infographic-container {
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        background: #f9f9f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        box-sizing: border-box;
+        margin-top: 15px;
+    }
+
+    .infographic-container img {
+        width: 100%;
+        max-width: 950px;
+        height: auto;
+        object-fit: contain;
+        border-radius: 6px;
+    }
+
+    /* --- HUISSTIJL SCHUINE FOOTER (ZONDER TEKST) --- */
+    footer {
+        width: 100%;
+        height: 160px;
+        background: transparent;
+        position: relative;
+        margin-top: auto;
+        z-index: 1;
+    }
+
+    footer::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 160px;
+        background: linear-gradient(90deg, #78bce0 0%, #78bce0 25%, #a3d977 25%, #a3d977 65%, #78bce0 65%);
+        clip-path: polygon(0 75%, 100% 25%, 100% 100%, 0 100%);
+        z-index: 1;
+    }
+</style>
+</head>
+<body>
+
+    <!-- Navigatiebalk -->
+    <div id="navbar">
+       <a href="hoofdpagina.html" class="nav-logo">
+    <img src="images/logo.png" alt="Mooi Maasvallei Logo">
+</a>
+        <div class="nav-links">
+            <a href="hoofdpagina.html">Hoofdpagina</a>
+            <a href="producenten.html">Producenten</a>
+            <a href="afnemers.html" class="active">Afnemers</a>
+            <a href="kaart.html">Kaart</a>
+            <a href="consument.html">Consument</a>
+            <a href="bronnen.html">Bronnen</a>
+        </div>
+        <a href="https://mooimaasvallei.nl/contact/" class="nav-contact">| Contact |</a>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <img src="images/kansenafnemers.jpg" alt="Kansen voor voedsel afnemers banner">
+        </div>
+
+        <!-- Titel Bubbel -->
+        <div class="page-title-badge">
+            Kansen voor voedsel afnemers
+        </div>
+
+        <!-- Hoofdkader -->
+        <div class="main-card">
+            
+            <div>
+                <a href="afnemers.html" class="back-link">&larr; Terug naar overzicht</a>
+                <h2>Hoe komt er meer lokaal voedsel op ons bord?</h2>
+                <p class="section-text">
+                    Ziekenhuizen, scholen, zorginstellingen en restaurants kopen dagelijks voedsel in. Door samen te werken met boeren en leveranciers kunnen zij meer lokale producten aanbieden.
+                </p>
+            </div>
+
+            <!-- Punten 1 t/m 4 -->
+            <div class="kans-item">
+                <h3>1. Samenwerken met lokale boeren</h3>
+                <p>Door rechtstreeks of via regionale leveranciers producten in te kopen, kunnen afnemers lokale ondernemers steunen.</p>
+            </div>
+
+            <div class="kans-item">
+                <h3>2. Slimmer transporteren</h3>
+                <p>Door bestellingen te bundelen en transport te combineren, kunnen verschillende afnemers hun voorraden perfect afstemmen met de leveranciers.</p>
+            </div>
+
+            <div class="kans-item">
+                <h3>3. Meer lokale producten op het menu</h3>
+                <p>Met seizoensproducten uit de regio kunnen ziekenhuizen, zorginstellingen, maar ook scholen en horeca hun menu gevarieerder maken en de herkomst van voedsel zichtbaar maken.</p>
+            </div>
+
+            <div class="kans-item">
+                <h3>4. Samen inkopen</h3>
+                <p>Scholen, zorginstellingen, en restaurants kunnen gezamenlijk producten bestellen. Dit kan lokale leveranciers helpen om grotere hoeveelheden af te leveren.</p>
+            </div>
+
+            <!-- Voorbeeld uit de regio -->
+            <div class="voorbeeld-box">
+                <h3>Een voorbeeld uit de regio</h3>
+                <p>Maasziekenhuis Pantein werkt samen met Goei Gerei om streekproducten uit Land van Cuijk aan te bieden in het restaurant en Grand Café.</p>
+            </div>
+
+            <!-- Infographic sectie -->
+            <div class="infographic-container">
+                <img src="images/infographic.png" alt="Infographic route van het voedsel naar het ziekenhuis">
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Huisstijl Footer zonder tekst -->
+    <footer></footer>
+
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="utf-8" />
+<title>Mooi Maasvallei - Bronnen</title>
+<style>
+    /* --- ACHTERGROND & BASIS --- */
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        min-height: 100% !important;
+        background-color: #ffffff !important;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+    body {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    /* --- NAVIGATIEBALK --- */
+    #navbar {
+        width: 100%;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 40px;
+        box-sizing: border-box;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        position: relative;
+        z-index: 1000;
+    }
+    .nav-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+
+    .nav-logo img {
+        height: 85px;
+        width: auto;
+        object-fit: contain;
+    }
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        font-size: 15px;
+        padding: 8px 14px;
+        border-radius: 20px;
+        transition: all 0.2s ease;
+    }
+    .nav-links a:hover {
+        color: #0066ff;
+    }
+    .nav-links a.active {
+        background-color: #3bb2e8;
+        color: white;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .nav-contact {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    /* --- CONTENT CONTAINER --- */
+    .content-wrapper {
+        width: 100%;
+        max-width: 1100px;
+        margin: 30px 20px 100px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        z-index: 2;
+    }
+
+    /* --- HERO BANNER --- */
+    .hero-banner {
+        position: relative;
+        width: 100%;
+        height: 280px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    /* --- TITEL BUBBEL --- */
+    .page-title-badge {
+        align-self: flex-start;
+        background-color: #a3d977;
+        color: #000;
+        font-weight: bold;
+        font-size: 26px;
+        padding: 10px 30px;
+        border-radius: 30px;
+        margin-top: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* --- HOOFDKADER --- */
+    .main-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        border: 1px solid #eee;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .main-card h2 {
+        font-size: 24px;
+        color: #000;
+        margin: 0;
+    }
+
+    .intro-text {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #444;
+        margin: 0 0 10px 0;
+    }
+
+    /* --- BRONNEN TABEL STYLING --- */
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+        border-radius: 12px;
+        border: 1px solid #78bce0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .sources-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #d8f0fa;
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .sources-table th, 
+    .sources-table td {
+        padding: 12px 16px;
+        border: 1px solid #b3d9eb;
+        vertical-align: top;
+    }
+
+    .sources-table th {
+        background-color: #c4e7f7;
+        color: #000;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 15px;
+    }
+
+    .sources-table td a {
+        color: #0066ff;
+        text-decoration: underline;
+        word-break: break-all;
+    }
+
+    .sources-table td a:hover {
+        color: #0044cc;
+    }
+
+    .section-header-row td {
+        background-color: #bce3f5;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 15px;
+        color: #000;
+    }
+
+    /* --- HUISSTIJL SCHUINE FOOTER --- */
+    footer {
+        width: 100%;
+        height: 160px;
+        background: transparent;
+        position: relative;
+        margin-top: auto;
+        z-index: 1;
+    }
+
+    footer::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 160px;
+        background: linear-gradient(90deg, #78bce0 0%, #78bce0 25%, #a3d977 25%, #a3d977 65%, #78bce0 65%);
+        clip-path: polygon(0 75%, 100% 25%, 100% 100%, 0 100%);
+        z-index: 1;
+    }
+</style>
+</head>
+<body>
+
+    <!-- Navigatiebalk -->
+    <div id="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="images/logo.png" alt="Mooi Maasvallei Logo">
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Hoofdpagina</a>
+            <a href="producenten.html">Producenten</a>
+            <a href="afnemers.html">Afnemers</a>
+            <a href="kaart.html">Kaart</a>
+            <a href="consument.html">Consument</a>
+            <a href="bronnen.html" class="active">Bronnen</a>
+        </div>
+        <a href="https://mooimaasvallei.nl/contact/" class="nav-contact">| Contact |</a>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+
+        <!-- Hero Banner met lezenvoordelijst.jpg -->
+        <div class="hero-banner">
+            <img src="images/lezenvoordelijst.jpg" alt="Bronnen en boeken banner">
+        </div>
+
+        <!-- Titel Bubbel -->
+        <div class="page-title-badge">
+            Bronnen
+        </div>
+
+        <!-- Hoofdkader -->
+        <div class="main-card">
+            
+            <h2>Bronnen nodig?</h2>
+            <p class="intro-text">
+                Op deze pagina kun je alle bronnen terug vinden die gebruikt zijn bij het maken van deze website.
+            </p>
+
+            <!-- Tabel met Bronnen -->
+            <div class="table-container">
+                <table class="sources-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 45%;">Bronnen gebruikt binnen deze site:</th>
+                            <th style="width: 55%;">Welke informatie is er te vinden?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="https://www.delokalecirkel.com/" target="_blank">https://www.delokalecirkel.com/</a></td>
+                            <td>Thuiswinkelen is een website waar je lokale boodschappen kan doen en werkt als een lokaal alternatief van thuisbezorgd.nl</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://lekkerder.nl/boerderijautomaten-in-cuijk" target="_blank">https://lekkerder.nl/boerderijautomaten-in-cuijk</a></td>
+                            <td>Een website waar overzichtelijk boerderijautomaten en boerderij winkels staan.</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://nowastearmy.nl/" target="_blank">https://nowastearmy.nl/</a></td>
+                            <td>Landelijk initiatief om reststromen uit de voedselverwerking te verwerken en naar mensen thuis te versturen.</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://stories.nos.nl/video/2633523-een-goedkope-schoolkantine-het-kan-wel" target="_blank">https://stories.nos.nl/video/2633523-een-goedkope-schoolkantine-het-kan-wel</a></td>
+                            <td>Een nieuws fragment over een middelbare school die hun eigen producten in de kantine bereiden.</td>
+                        </tr>
+                        
+                        <!-- Kopje Externe bronnen -->
+                        <tr class="section-header-row">
+                            <td>Externe bronnen:</td>
+                            <td>Welke informatie is er te vinden?</td>
+                        </tr>
+
+                        <tr>
+                            <td><a href="https://research.wur.nl/en/publications/gebiedsgerichte-initiatieven-voor-lokaal-en-regionaal-voedsel-her/" target="_blank">https://research.wur.nl/en/publications/gebiedsgerichte-initiatieven-voor-lokaal-en-regionaal-voedsel-her/</a></td>
+                            <td>WUR studie naar gebiedsgerichte initiatieven voor lokaal en regionaal voedsel (2025):</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://research.wur.nl/en/publications/duurzaamheid-van-verschillende-typen-korte-keten-en-lokale-voedse/" target="_blank">https://research.wur.nl/en/publications/duurzaamheid-van-verschillende-typen-korte-keten-en-lokale-voedse/</a></td>
+                            <td>WUR studie naar duurzaamheid van korte keten en lokaal voedsel initiatieven (2025):</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://taskforcekorteketen.nl/" target="_blank">https://taskforcekorteketen.nl/</a></td>
+                            <td>Stichting Taskforce Korte Keten</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.wur.nl/nl/nieuws/monitor-korte-ketens-2023-boer-verkoopt-producten-steeds-vaker-zelf" target="_blank">https://www.wur.nl/nl/nieuws/monitor-korte-ketens-2023-boer-verkoopt-producten-steeds-vaker-zelf</a></td>
+                            <td>WUR korte keten monitor (2023)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Schuine Footer -->
+    <footer></footer>
+
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta charset="utf-8" />
+<title>Mooi Maasvallei - Voedsel afnemers</title>
+<style>
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        min-height: 100% !important;
+        background-color: #ffffff !important;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+    body {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+
+    /* --- NAVIGATIEBALK --- */
+    #navbar {
+        width: 100%;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 40px;
+        box-sizing: border-box;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        position: relative;
+        z-index: 1000;
+    }
+   .nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+.nav-logo img {
+    height: 85px;
+    width: auto;
+    object-fit: contain;
+}
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        font-size: 15px;
+        padding: 8px 14px;
+        border-radius: 20px;
+        transition: all 0.2s ease;
+    }
+    .nav-links a:hover {
+        color: #0066ff;
+    }
+    .nav-links a.active {
+        background-color: #3bb2e8;
+        color: white;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .nav-contact {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    /* --- CONTENT CONTAINER --- */
+    .content-wrapper {
+        width: 100%;
+        max-width: 1100px;
+        margin: 30px 20px 60px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    /* --- HERO BANNER --- */
+    .hero-banner {
+        position: relative;
+        width: 100%;
+        height: 280px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* --- TITEL BUBBEL --- */
+    .page-title-badge {
+        align-self: flex-start;
+        background-color: #a3d977;
+        color: #000;
+        font-weight: bold;
+        font-size: 26px;
+        padding: 10px 30px;
+        border-radius: 30px;
+        margin-top: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* --- HOOFDKADER (WITTE CONTAINER) --- */
+    .main-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* --- FIGMA DESIGN CARDS --- */
+    .figma-card {
+        display: flex;
+        background: #ffffff;
+        border: 1px solid #d0d0d0;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        min-height: 190px;
+        position: relative;
+    }
+
+    .card-left {
+        width: 55%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-left img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+    }
+
+    .card-blue-bar {
+        background-color: #3bb2e8;
+        color: white;
+        padding: 12px 20px;
+        font-weight: bold;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+
+    .card-right {
+        width: 45%;
+        padding: 20px 25px;
+        background-color: #f4f8fa;
+        border-left: 1px solid #e0e0e0;
+        display: flex;
+        align-items: center;
+    }
+
+    .card-right p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #444;
+    }
+
+    .lees-meer-btn {
+        background-color: #a3d977;
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 13px;
+        padding: 6px 14px;
+        border-radius: 15px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        transition: transform 0.1s ease, background-color 0.2s ease;
+        white-space: nowrap;
+    }
+    .lees-meer-btn:hover {
+        background-color: #8ec860;
+        transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+        .figma-card {
+            flex-direction: column;
+        }
+        .card-left, .card-right {
+            width: 100%;
+        }
+    }
+
+ footer {
+    width: 100%;
+    height: 160px;
+    background: transparent;
+    position: relative;
+    margin-top: auto;
+    z-index: 1;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(90deg, #78bce0 0%, #78bce0 25%, #a3d977 25%, #a3d977 65%, #78bce0 65%);
+    clip-path: polygon(0 75%, 100% 25%, 100% 100%, 0 100%);
+    z-index: 1;
+}
+</style>
+</head>
+<body>
+
+    <!-- Navigatiebalk -->
+    <div id="navbar">
+        <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Mooi Maasvallei Logo">
+</a>
+        <div class="nav-links">
+            <a href="index.html">Hoofdpagina</a>
+            <a href="producenten.html">Producenten</a>
+            <a href="afnemers.html" class="active">Afnemers</a>
+            <a href="kaart.html">Kaart</a>
+            <a href="consument.html">Consument</a>
+            <a href="bronnen.html">Bronnen</a>
+        </div>
+        <a href="https://mooimaasvallei.nl/contact/" class="nav-contact">| Contact |</a>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+
+        <!-- Banner Afbeelding -->
+        <div class="hero-banner">
+            <img src="images/mooimaasvalleibanner.png" alt="Mooi Maasvallei banner">
+        </div>
+
+        <!-- Titel Bubbel -->
+        <div class="page-title-badge">
+            Voedsel afnemers
+        </div>
+
+        <!-- Hoofdkader -->
+        <div class="main-card">
+            
+            <!-- Kaart 1: Voedselafnemers in de regio -->
+            <div class="figma-card">
+                <div class="card-left">
+                    <img src="images/afnemersregio.jpg" alt="Voedselafnemers in de regio">
+                    <div class="card-blue-bar">
+                        <span>Voedselafnemers in de regio</span>
+                        <a href="afnemersregio.html" class="lees-meer-btn">Lees meer &rarr;</a>
+                    </div>
+                </div>
+                <div class="card-right">
+                    <p>Bekijk de plekken in de regio waar lokaal eten wordt aangeboden en hoe de voedselketen in elkaar zit.</p>
+                </div>
+            </div>
+
+            <!-- Kaart 2: Kansen voor voedsel afnemers (Link nu naar kansenafnemers.html) -->
+            <div class="figma-card">
+                <div class="card-left">
+                    <img src="images/kansenafnemers2.jpg" alt="Kansen voor voedsel afnemers">
+                    <div class="card-blue-bar">
+                        <span>Kansen voor voedsel afnemers</span>
+                        <a href="kansenafnemers.html" class="lees-meer-btn">Lees meer &rarr;</a>
+                    </div>
+                </div>
+                <div class="card-right">
+                    <p>Ontdek hoe scholen, ziekenhuizen en horeca meer lokaal voedsel kunnen inkopen en samenwerken.</p>
+                </div>
+            </div>
+
+            <!-- Kaart 3: Wat kun je doen als consument? -->
+            <div class="figma-card">
+                <div class="card-left">
+                    <img src="images/consument.avif" alt="Wat kun je doen als consument?">
+                    <div class="card-blue-bar">
+                        <span>Wat kun je doen als consument?</span>
+                        <a href="consument.html" class="lees-meer-btn">Lees meer &rarr;</a>
+                    </div>
+                </div>
+                <div class="card-right">
+                    <p>Ontdek wat je als consument zelf kunt doen om bij te dragen aan een korte en krachtige voedselketen.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+    </footer>
+
+</body>
+</html>
